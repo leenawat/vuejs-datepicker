@@ -67,8 +67,9 @@ export default {
     pageYearName () {
       const yearSuffix = this.translation.yearSuffix
       let year = this.utils.getFullYear(this.pageDate)
-      if(this.translation.language === 'Thai')
+      if (this.translation.language === 'Thai') {
         year = parseInt(year) + 543
+      }
       return `${year}${yearSuffix}`
     },
     /**

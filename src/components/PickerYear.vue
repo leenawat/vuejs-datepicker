@@ -47,7 +47,7 @@ export default {
         : new Date(Math.floor(d.getFullYear() / 10) * 10, d.getMonth(), d.getDate(), d.getHours(), d.getMinutes())
       for (let i = 0; i < 10; i++) {
         let year = this.utils.getFullYear(dObj)
-        if(this.translation.language === 'Thai') {
+        if (this.translation.language === 'Thai') {
           year = parseInt(year) + 543
         }
         years.push({
@@ -64,10 +64,10 @@ export default {
      * @return {String}
      */
     getPageDecade () {
-      
       let year = this.utils.getFullYear(this.pageDate)
-      if(this.translation.language === 'Thai')
+      if (this.translation.language === 'Thai') {
         year = parseInt(year) + 543
+      }
       const decadeStart = Math.floor(year / 10) * 10
       const decadeEnd = decadeStart + 9
       const yearSuffix = this.translation.yearSuffix

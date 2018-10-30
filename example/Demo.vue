@@ -14,12 +14,12 @@
       <h3>datepicker ภาษาไทย และปี พ.ศ. ...</h3>
       <datepicker 
         :language="languages.th" 
-        :format="customFormatter"  
+        :format="thFormatter"  
         placeholder="Select Date" 
         v-model="state.myDate"
       />
       <code>
-          &lt;datepicker placeholder="Select Date"&gt;&lt;/datepicker&gt;
+          &lt;datepicker :language="languages.th" :format="thFormatter" placeholder="Select Date"&gt;&lt;/datepicker&gt;
       </code>
     </div>
 
@@ -315,7 +315,7 @@ export default {
     }
   },
   methods: {
-    customFormatter(date) {
+    thFormatter(date) {
       return moment(date).format('D MMM ') + (parseInt(moment(date).format('YYYY')) + 543);
     },
     highlightTo (val) {
