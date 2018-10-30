@@ -46,8 +46,12 @@ export default {
         ? new Date(Date.UTC(Math.floor(d.getUTCFullYear() / 10) * 10, d.getUTCMonth(), d.getUTCDate()))
         : new Date(Math.floor(d.getFullYear() / 10) * 10, d.getMonth(), d.getDate(), d.getHours(), d.getMinutes())
       for (let i = 0; i < 10; i++) {
+        let year = this.utils.getFullYear(dObj)
+        if(this.translation.language === 'Thai') {
+          year = parseInt(year) + 543
+        }
         years.push({
-          year: this.utils.getFullYear(dObj),
+          year: year,
           timestamp: dObj.getTime(),
           isSelected: this.isSelectedYear(dObj),
           isDisabled: this.isDisabledYear(dObj)
@@ -60,7 +64,11 @@ export default {
      * @return {String}
      */
     getPageDecade () {
-      const decadeStart = Math.floor(this.utils.getFullYear(this.pageDate) / 10) * 10
+      
+      let year = this.utils.getFullYear(this.pageDate)
+      if(this.translation.language === 'Thai')
+        year = parseInt(year) + 543
+      const decadeStart = Math.floor(year / 10) * 10
       const decadeEnd = decadeStart + 9
       const yearSuffix = this.translation.yearSuffix
       return `${decadeStart} - ${decadeEnd}${yearSuffix}`

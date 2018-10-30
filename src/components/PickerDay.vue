@@ -125,8 +125,13 @@ export default {
      * @return {Number}
      */
     currYearName () {
+      console.log(this.translation)
       const yearSuffix = this.translation.yearSuffix
-      return `${this.utils.getFullYear(this.pageDate)}${yearSuffix}`
+      let year = this.utils.getFullYear(this.pageDate)
+      if(this.translation.language === 'Thai')
+        year = parseInt(year) + 543
+
+      return `${year}${yearSuffix}`
     },
     /**
      * Is this translation using year/month/day format?

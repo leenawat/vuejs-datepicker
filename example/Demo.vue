@@ -9,6 +9,20 @@
       </code>
     </div>
 
+    <h1>Datepicker Examples</h1>
+    <div class="example">
+      <h3>datepicker ภาษาไทย และปี พ.ศ. ...</h3>
+      <datepicker 
+        :language="languages.th" 
+        :format="customFormatter"  
+        placeholder="Select Date" 
+        v-model="state.myDate"
+      />
+      <code>
+          &lt;datepicker placeholder="Select Date"&gt;&lt;/datepicker&gt;
+      </code>
+    </div>
+
     <div class="example">
       <h3>Typeable datepicker</h3>
       <datepicker placeholder="Type or select date" :typeable="true" />
@@ -253,8 +267,13 @@
 import Datepicker from '../src/components/Datepicker.vue'
 import * as lang from '../src/locale/index.js'
 
+
+import moment from 'moment/min/moment-with-locales'
+moment.locale('th');
+
 const state = {
-  date1: new Date()
+  date1: new Date(),
+  myDate: new Date()
 }
 
 export default {
@@ -296,6 +315,9 @@ export default {
     }
   },
   methods: {
+    customFormatter(date) {
+      return moment(date).format('D MMM ') + (parseInt(moment(date).format('YYYY')) + 543);
+    },
     highlightTo (val) {
       if (typeof this.highlighted.to === 'undefined') {
         this.highlighted = {
