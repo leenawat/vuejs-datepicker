@@ -26,8 +26,65 @@ https://codesandbox.io/s/mpklq49wp
 
 To view demo examples locally clone the repo and run `yarn install && yarn serve`
 
-## Install
+## install from git repo สำหรับใช้ภาษาไทย
+```bash
+npm install leenawat/vuejs-datepicker-th --save
+```
+## ตัวอย่าง code
+```
+<template>
+  <div>
+    <select v-model="selected">
+      <option disabled value="">Please select one</option>
+      <option value="th" selected>Thai</option>
+      <option value="en">English</option>
+    </select>
+    <datepickerTh :language="language" :format="thFormatter"></datepickerTh>
+  </div>
+</template>
+<script>
+import DatepickerTh from 'vuejs-datepicker-th'
+import { en, th } from 'vuejs-datepicker-th/dist/locale'
+import moment from 'moment/min/moment-with-locales'
+export default {
+  name: 'app',
+  data () {
+    return {
+      selected: 'th',
+      languages: {
+        en: en,
+        th: th,
+      }
+    }
+  },
+  computed: {
+    language () {
+      if (this.selected === 'th') {
+        moment.locale(this.selected)
+        return this.languages.th
+      } else {
+        moment.locale('en')
+        return this.languages.en
+      }
+    }
+  },
 
+  methods: {
+    thFormatter (date) {
+      let yearOffset = 0;
+      if(this.selected == 'th') {
+        yearOffset = 543;
+      }
+      return moment(date).format('D MMM ') + (parseInt(moment(date).format('YYYY')) + yearOffset);
+    },
+  },
+  components: {
+    datepickerTh: DatepickerTh
+  }
+}
+</script>
+```
+## Install
 ``` bash
 npm install vuejs-datepicker --save
 ```
