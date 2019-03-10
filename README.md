@@ -6,7 +6,7 @@ npm install leenawat/vuejs-datepicker-th --save
 npm install date-fns --save
 ```
 ## ตัวอย่างภาษาไทย ปี พ.ศ.
-```
+``` html
 <template>
   <div>
     <datepickerTh :language="language" :format="thFormatter" v-model="myDate"></datepickerTh>
@@ -52,7 +52,7 @@ export default {
 ```
 ## ตัวอย่าง 2 ภาษา 
 เลือกจาก dropdown เปลี่ยนภาษา และเปลี่ยน ค.ศ. <-> พ.ศ.
-```
+``` html
 <template>
   <div>
     <select v-model="selected">
