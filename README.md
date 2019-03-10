@@ -10,6 +10,7 @@ npm install date-fns --save
 <template>
   <div>
     <datepickerTh :language="language" :format="thFormatter" v-model="myDate"></datepickerTh>
+    {{ myDate }}
   </div>
 </template>
 <script>
@@ -37,14 +38,9 @@ export default {
   components: {
     datepickerTh: DatepickerTh
   },
-
   methods: {
     thFormatter (date) {
-      let yearOffset = 0;
-      if (this.selected == 'th') {
-        yearOffset = 543;
-      }
-      return dateFns.format(date, 'D MMM ', { locale: this.dateFnsLocal }) + (parseInt(dateFns.format(date, 'YYYY')) + yearOffset);
+      return dateFns.format(date, 'D MMM ', { locale: this.dateFnsLocal }) + (parseInt(dateFns.format(date, 'YYYY')) + 543);
     },
   }
 }
@@ -61,6 +57,7 @@ export default {
       <option value="en">English</option>
     </select>
     <datepickerTh :language="language" :format="thFormatter" v-model="myDate"></datepickerTh>
+    {{ myDate }}
   </div>
 </template>
 <script>
